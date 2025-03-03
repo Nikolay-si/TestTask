@@ -1,6 +1,8 @@
 .title {
-  margin-top: 41px;
+  padding-top: 40px;
   font-family: "Montserrat";
   font-weight: 700;
   font-size: 26px;
+  margin-bottom: 40px;
+  color: #222222;
 }

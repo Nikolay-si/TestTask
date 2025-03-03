@@ -8,11 +8,11 @@ interface Props {
   testCount: number;
 }
 
-export default function SearchBar({
+export const SearchBar = ({
   searchInput,
   setSearchInput,
   testCount,
-}: Props) {
+}: Props) => {
   return (
     <div className={styles.container}>
       <img className={styles.loupePic} src={searchIcon} alt="search icon"></img>
@@ -26,4 +26,4 @@ export default function SearchBar({
       <p className={styles.testCounter}>{testCount} tests</p>
     </div>
   );
-}
+};

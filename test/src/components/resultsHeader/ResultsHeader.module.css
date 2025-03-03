@@ -8,7 +8,16 @@
   font-size: 12px;
   font-weight: 500;
   color: #999999;
-  padding-bottom: 5px;
+  margin-bottom: 10px;
   font-family: "Roboto";
   cursor: pointer;
+}
+.columnTitleName {
+  font-size: 12px;
+  font-weight: 500;
+  color: #999999;
+  margin-bottom: 10px;
+  font-family: "Roboto";
+  cursor: pointer;
+  margin-left: 13px;
 }

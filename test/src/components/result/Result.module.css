@@ -1,5 +1,5 @@
 .container {
-  margin-top: 5px;
+  margin-bottom: 5px;
   display: grid;
   grid-template-columns: 4px 389px 1fr 1fr 1fr 1fr;
   align-items: center;
@@ -23,25 +23,23 @@
 }
 .testName {
   font-size: 13px;
-
   margin-left: 15px;
-  font-family: "Roboto";
   font-weight: 500;
+  color: #474747;
 }
 .testType {
   font-size: 12px;
-  font-family: "Roboto";
   font-weight: 400;
+  color: #5c5c5c;
 }
 .testStatus {
   font-size: 12px;
-  font-family: "Roboto";
   font-weight: 500;
 }
 .testSite {
   font-size: 12px;
-  font-family: "Roboto";
   font-weight: 400;
+  color: #5c5c5c;
 }
 .buttonResult {
   width: 95px;
