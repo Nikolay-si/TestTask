@@ -1,0 +1,67 @@
+.container {
+  margin-top: 5px;
+  display: grid;
+  grid-template-columns: 4px 389px 1fr 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: start;
+  height: 70px;
+  background-color: #ffffff;
+  border-radius: 3px;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+}
+.container:hover {
+  box-shadow: 0px 0px 10px #00000026;
+}
+
+.indicator {
+  background-color: #e14165;
+  width: 3px;
+  height: 100%;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.testName {
+  font-size: 13px;
+
+  margin-left: 15px;
+  font-family: "Roboto";
+  font-weight: 500;
+}
+.testType {
+  font-size: 12px;
+  font-family: "Roboto";
+  font-weight: 400;
+}
+.testStatus {
+  font-size: 12px;
+  font-family: "Roboto";
+  font-weight: 500;
+}
+.testSite {
+  font-size: 12px;
+  font-family: "Roboto";
+  font-weight: 400;
+}
+.buttonResult {
+  width: 95px;
+  height: 30px;
+  background-color: #2ee5ac;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-left: 30px;
+  font-family: "Montserrat";
+  font-size: 12px;
+}
+.buttonFinalize {
+  width: 95px;
+  height: 30px;
+  background-color: #7d7d7d;
+  color: #ffffff;
+  font-weight: 500;
+  border-radius: 10px;
+  margin-left: 30px;
+  font-family: "Montserrat";
+  font-size: 12px;
+}

@@ -1,0 +1,26 @@
+.noResultContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+  text-align: center;
+}
+
+.noResults {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.resetButton {
+  width: 95px;
+  height: 30px;
+  background-color: #2ee5ac;
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 10px;
+  font-family: "Montserrat";
+  font-size: 12px;
+  margin-top: 20px;
+}
