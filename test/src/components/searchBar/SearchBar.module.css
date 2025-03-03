@@ -1,0 +1,32 @@
+.container {
+  position: relative;
+  margin-top: 40px;
+}
+.searchBar {
+  width: 922px;
+  height: 45px;
+  border-radius: 15px;
+  padding-left: 30px;
+  border: 1px solid #ebebeb;
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 400;
+  color: #d1d1d1;
+}
+.searchBar::placeholder {
+  color: #d1d1d1;
+}
+.loupePic {
+  position: absolute;
+  top: 17px;
+  left: 7px;
+}
+.testCounter {
+  position: absolute;
+  top: 15px;
+  left: 900px;
+  font-weight: 400;
+  font-family: "Roboto";
+  font-size: 14px;
+  color: #d1d1d1;
+}

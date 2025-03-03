@@ -1,0 +1,15 @@
+.container {
+  display: grid;
+  grid-template-columns: 389px 1fr 1fr 1fr 1fr;
+  padding-left: 4px;
+  margin-top: 30px;
+}
+
+.columnTitle {
+  font-size: 12px;
+  font-weight: 500;
+  color: #999999;
+  padding-bottom: 5px;
+  font-family: "Roboto";
+  cursor: pointer;
+}
