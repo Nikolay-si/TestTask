@@ -1,12 +1,21 @@
 import React from "react";
-import MainPage from "./components/mainPage/MainPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MainPage } from "./pages/mainPage/MainPage";
 import styles from "./App.module.css";
+import { ResultPage } from "./pages/resultPage/ResultPage";
+import { FinalizePage } from "./pages/finalizePage/FinalizePage";
 
 function App() {
   return (
-    <div className={styles.container}>
-      <MainPage />
-    </div>
+    <BrowserRouter>
+      <div className={styles.container}>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/results/:testId" element={<ResultPage />} />
+          <Route path="/finalize/:testId" element={<FinalizePage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

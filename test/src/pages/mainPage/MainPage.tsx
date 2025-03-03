@@ -1,19 +1,19 @@
-import Header from "../header/Header";
-import SearchBar from "../searchBar/SearchBar";
-import SearchResult from "../searchResult/SearchResult";
-import { fetchData } from "../../services/api";
+import { Header } from "../../components/header/Header";
+import { SearchBar } from "../../components/searchBar/SearchBar";
+import { SearchResult } from "../../components/searchResult/SearchResult";
+import { fetchData } from "./fetchData";
 import { useEffect, useState, useMemo } from "react";
-import { Site, Test } from "../../types";
+import { Site, SortConfig, SortKey, Test } from "../../types";
 import styles from "./MainPage.module.css";
+import { ResultsHeader } from "../../components/resultsHeader/ResultsHeader";
+import { sortFunctions } from "./sorting";
+import { Link } from "react-router-dom";
 
-export default function MainPage() {
+export const MainPage = () => {
   const [tests, setTests] = useState<Test[]>([]);
   const [sites, setSites] = useState<Site[]>([]);
-  const [searchInput, setSearchInput] = useState<string>("");
-  const [sortConfig, setSortConfig] = useState<{
-    key: string;
-    direction: "asc" | "desc";
-  } | null>(null);
+  const [searchInput, setSearchInput] = useState("");
+  const [sortConfig, setSortConfig] = useState<SortConfig | null>(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -28,30 +28,26 @@ export default function MainPage() {
     test.name.toLowerCase().includes(searchInput.toLowerCase())
   );
 
+  const mappedSites = useMemo(() => {
+    return sites.reduce((acc, site) => {
+      acc[site.id] = site;
+      return acc;
+    }, {} as Record<number, Site>);
+  }, [sites]);
+
   const sortedTests = useMemo(() => {
     if (!sortConfig) return filteredTests;
 
     return [...filteredTests].sort((a, b) => {
-      const aValue = a[sortConfig.key as keyof Test];
-      const bValue = b[sortConfig.key as keyof Test];
-
-      if (sortConfig.key === "status") {
-        const statusOrder = ["ONLINE", "PAUSED", "STOPPED", "DRAFT"];
-        const aIndex = statusOrder.indexOf(a.status);
-        const bIndex = statusOrder.indexOf(b.status);
-
-        return sortConfig.direction === "asc"
-          ? aIndex - bIndex
-          : bIndex - aIndex;
+      const sortFunction = sortFunctions[sortConfig.key];
+      if (sortFunction) {
+        return sortFunction(a, b, sortConfig.direction, mappedSites);
       }
-
-      if (aValue < bValue) return sortConfig.direction === "asc" ? -1 : 1;
-      if (aValue > bValue) return sortConfig.direction === "asc" ? 1 : -1;
       return 0;
     });
-  }, [filteredTests, sortConfig]);
+  }, [filteredTests, sortConfig, mappedSites]);
 
-  const handleSort = (key: string) => {
+  const handleSort = (key: SortKey) => {
     const direction =
       sortConfig?.key === key && sortConfig.direction === "asc"
         ? "desc"
@@ -80,13 +76,16 @@ export default function MainPage() {
           </button>
         </div>
       ) : (
-        <SearchResult
-          tests={sortedTests}
-          sites={sites}
-          onSort={handleSort}
-          sortConfig={sortConfig}
-        />
+        <div>
+          <ResultsHeader onSort={handleSort} sortConfig={sortConfig} />
+          <SearchResult
+            tests={sortedTests}
+            sites={sites}
+            onSort={handleSort}
+            sortConfig={sortConfig}
+          />
+        </div>
       )}
     </div>
   );
-}
+};

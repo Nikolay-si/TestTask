@@ -6,17 +6,28 @@ import {
   getIndicatorColor,
   getStatusTextColor,
 } from "../../helpers/helpers";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   name: string;
   type: Type;
   status: Status;
   site: string;
+  testId: number;
 }
 
-export default function Result({ name, type, status, site }: Props) {
+export const Result = ({ name, type, status, site, testId }: Props) => {
   const indicatorColor = getIndicatorColor(site);
   const statusTextColor = getStatusTextColor(status);
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    if (status === "DRAFT") {
+      navigate(`/finalize/${testId}`);
+    } else {
+      navigate(`/results/${testId}`);
+    }
+  };
 
   return (
     <div className={styles.container}>
@@ -34,9 +45,10 @@ export default function Result({ name, type, status, site }: Props) {
         className={
           status === "DRAFT" ? styles.buttonFinalize : styles.buttonResult
         }
+        onClick={handleButtonClick}
       >
         {status === "DRAFT" ? "Finalize" : "Results"}
       </button>
     </div>
   );
-}
+};

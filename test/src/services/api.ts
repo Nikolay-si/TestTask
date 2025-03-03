@@ -1,21 +1,34 @@
 import axios from "axios";
-import { apiResponse, Site, Test } from "../types";
+import { Site, Test } from "../types";
 
 const url: string = "http://localhost:3100/";
 
-export const fetchData = async (): Promise<apiResponse> => {
+export const fetchTests = async (): Promise<Test[]> => {
   try {
-    const [testResponse, sitesResponse] = await Promise.all([
-      axios.get<Test[]>(`${url}tests`),
-      axios.get<Site[]>(`${url}sites`),
-    ]);
-
-    return {
-      tests: testResponse.data,
-      sites: sitesResponse.data,
-    };
+    const response = await axios.get<Test[]>(`${url}tests`);
+    return response.data;
   } catch (error) {
     console.error("Ошибка", error);
-    return { tests: [], sites: [] };
+    return [];
+  }
+};
+
+export const fetchSites = async (): Promise<Site[]> => {
+  try {
+    const response = await axios.get<Site[]>(`${url}sites`);
+    return response.data;
+  } catch (error) {
+    console.error("Ошибка", error);
+    return [];
+  }
+};
+
+export const fetchTestById = async (testId: string): Promise<Test | null> => {
+  try {
+    const response = await axios.get<Test>(`${url}tests/${testId}`);
+    return response.data;
+  } catch (error) {
+    console.error("Ошибка", error);
+    return null;
   }
 };

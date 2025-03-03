@@ -17,17 +17,17 @@ export const formatText = (text: string) => {
     .join("-");
 };
 
-const siteColors: Record<string, string> = {
+const colorBySite: Record<string, string> = {
   "games.company.com": "#E14165",
   "market.company.com": "#C2C2FF",
   "delivery.company.com": "#8686FF",
 };
 
 export const getIndicatorColor = (site: string): string => {
-  return siteColors[site] || "#E14165";
+  return colorBySite[site] || "#E14165";
 };
 
-const statusTextColors: Record<string, string> = {
+const colorByStatus: Record<string, string> = {
   ONLINE: "#1BDA9D",
   PAUSED: "#FF8346",
   STOPPED: "#FE4848",
@@ -35,5 +35,5 @@ const statusTextColors: Record<string, string> = {
 };
 
 export const getStatusTextColor = (status: string): string => {
-  return statusTextColors[status] || "#5C5C5C";
+  return colorByStatus[status] || "#5C5C5C";
 };

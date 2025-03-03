@@ -1,0 +1,10 @@
+.testName {
+  font-family: "Montserrat";
+  font-weight: 600;
+  font-size: 14px;
+  color: #222222;
+  margin-bottom: 700px;
+}
+.buttonContainer {
+  cursor: pointer;
+}
